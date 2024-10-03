@@ -2,6 +2,11 @@ package handler
 
 import "fmt"
 
+// Run initializes the application by loading configuration values from the environment,
+// setting up the router with the specified routes, and starting the HTTP server.
+//
+// The function sets up the routes using the provided listenEndpoint and starts the server
+// to listen for incoming connections.
 func Run() {
 	config, err := loadConfigFromEnv()
 	
