@@ -1,5 +1,6 @@
 
-module GithubWebhooks
+module github.com/M-logique/Github-Telegram-Webhook
+
 
 go 1.19
 
