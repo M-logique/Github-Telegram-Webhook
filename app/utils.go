@@ -2,6 +2,7 @@ package handler
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 	"strconv"
 	"strings"
@@ -81,6 +82,11 @@ func NewRouter(routes Routes) *gin.Engine {
         // Handle dynamically maps the route's method to the handler.
         router.Handle(route.Method, route.Path, route.Handler)
     }
+
+	// Redirects the 404 pages to the official git repository.
+	router.NoRoute(func(ctx *gin.Context) {
+		ctx.Redirect(http.StatusFound, "https://github.com/M-logique/Github-Telegram-Webhook")
+	})
 
     return router
 }
