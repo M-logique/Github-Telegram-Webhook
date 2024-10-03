@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/M-logique/Github-Telegram-Webhook/api"
+	"github.com/M-logique/Github-Telegram-Webhook/app"
 )
 
 func main() {
-	
+	handler.Run()
 }
