@@ -39,7 +39,7 @@ func loadRoutes(listenPath string) Routes {
 			"GET",
 			"/",
 			func(ctx *gin.Context) {
-				ctx.Redirect(http.StatusFound, "https://github.com/M-logique/Github-Telegram-Webhook")
+				ctx.String(http.StatusOK, "I'm online")
 			},
 		},
 	}
