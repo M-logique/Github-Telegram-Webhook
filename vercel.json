@@ -1,0 +1,19 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "api/main.go",
+        "use": "@vercel/go"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "api/main.go"
+      }
+    ],
+    "env": {
+        "LISTEN_ADDRESS": "0.0.0.0",
+        "LISTEN_PORT": "8080"
+    }
+}
