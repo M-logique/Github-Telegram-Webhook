@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/M-logique/Github-Telegram-Webhook/app"
+	"github.com/M-logique/Github-Telegram-Webhook/handler"
 )
 
 func main() {
