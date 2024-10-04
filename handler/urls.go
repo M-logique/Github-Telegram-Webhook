@@ -35,13 +35,6 @@ func loadRoutes(listenPath string) Routes {
 				ctx.JSON(http.StatusOK, gin.H{"message": "Send to Telegram: " + tgStatus})
 			},
 		},
-		{
-			"GET",
-			"/",
-			func(ctx *gin.Context) {
-				ctx.String(http.StatusOK, "I'm online")
-			},
-		},
 	}
 	
 	return urls
