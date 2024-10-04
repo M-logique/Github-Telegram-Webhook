@@ -8,14 +8,25 @@ import (
 
 func formatGitHubWebhook(r *http.Request, blacklistedActions string, blacklistedevents string) (string, error) {
 	var webhook GitHubWebhook
+	var targetedAction string = webhook.Action
+
+	
 	if err := json.NewDecoder(r.Body).Decode(&webhook); err != nil {
 		return "", err
 	}
-	if isBlacklisted(webhook.Action, blacklistedActions) {
+	event := r.Header.Get("X-GitHub-Event")
+
+	// Action can be empty, so we need to use this if
+	if webhook.Action != "" {
+		// Actions can be duplicated; for more customization, it's better to add
+		// the event at the end of the action
+		targetedAction = fmt.Sprintf("%s_%s", event, webhook.Action)
+	}
+
+	if isBlacklisted(targetedAction, blacklistedActions) {
 		return "", fmt.Errorf("action is blacklisted")
 	}
 
-	event := r.Header.Get("X-GitHub-Event")
 	if isBlacklisted(event, blacklistedevents) {
 		return "", fmt.Errorf("event is blacklisted")
 	}

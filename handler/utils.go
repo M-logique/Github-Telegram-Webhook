@@ -34,12 +34,12 @@ func loadConfigFromEnv() (map[string]interface{}, error) {
 
     portStr := os.Getenv("LISTEN_PORT")
     if portStr == "" {
-        portStr = "8080"  // Default to 8080 if LISTEN_PORT is not set
+        portStr = "8080"  // Defaults to 8080 if LISTEN_PORT is not set
     }
 
     addr := os.Getenv("LISTEN_ADDRESS")
     if addr == "" {
-        addr = "127.0.0.1"  // Default to 127.0.0.1 if LISTEN_ADDRESS is not set
+        addr = "127.0.0.1"  // Defaults to 127.0.0.1 if LISTEN_ADDRESS is not set
     }
 
     port, err := strconv.Atoi(portStr)
@@ -87,6 +87,8 @@ func NewRouter(routes Routes) *gin.Engine {
 	router.NoRoute(func(ctx *gin.Context) {
 		ctx.Redirect(http.StatusFound, "https://github.com/M-logique/Github-Telegram-Webhook")
 	})
+
+	router.Static("/gen", "./templates/generate_webhook")
 
     return router
 }
