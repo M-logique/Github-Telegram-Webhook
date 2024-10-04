@@ -2,14 +2,14 @@
     "version": 2,
     "builds": [
       {
-        "src": "app/index.go",
+        "src": "handler/index.go",
         "use": "@vercel/go"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "app/index.go"
+        "dest": "handler/index.go"
       }
     ],
     "env": {
